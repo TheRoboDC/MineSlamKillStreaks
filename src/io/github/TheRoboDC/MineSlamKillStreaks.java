@@ -16,7 +16,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 
 public class MineSlamKillStreaks extends JavaPlugin implements Listener {
-
 	Logger log = Logger.getLogger("Minecraft.LudusTravel");
 	Map<String, Integer> killstreak = new HashMap<String, Integer>();
 
@@ -56,6 +55,8 @@ public class MineSlamKillStreaks extends JavaPlugin implements Listener {
 			Player killer = p.getKiller();
 			p.sendMessage(ChatColor.GREEN + "Your killstreak was lost by " + ChatColor.RED + killer.getName());
 			addtokillstreak(killer);
+			int kills = killstreak.get(p);
+			kills = 0;
 		}
 		return;
 		}
