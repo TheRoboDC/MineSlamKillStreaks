@@ -1,0 +1,9 @@
+name: MineSlamKillStreaks
+description: Provides rewards upon specific KillStreaks.
+main: io.github.TheRoboDC.MineSlamKillStreaks
+author: robo7193
+version: 1.0
+commands:
+  kd:
+    description: Finds your kill to death ratio.
+    usage: /<command>
