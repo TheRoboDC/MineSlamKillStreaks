@@ -1,5 +1,6 @@
 package io.github.TheRoboDC;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -31,8 +32,14 @@ public class MineSlamKillStreaks extends JavaPlugin implements Listener {
 	@Override
 	public void onDisable() {
 		getLogger().info("MineSlamKillStreaks has been disabled!");
+		File configFile = new File(this.getDataFolder() + "/config.yml");
+		if(!configFile.exists())
+		{
+		  this.saveDefaultConfig();
+		}
 	}
-
+	
+	
 	public boolean onCommand(final CommandSender sender, final Command command, final String label, final String[] args) {
 		if(command.getName().equalsIgnoreCase("kd")){ //Is the command /kd?
 			if(sender instanceof Player){ //Is the sender a Player?
@@ -55,8 +62,10 @@ public class MineSlamKillStreaks extends JavaPlugin implements Listener {
 			Player killer = p.getKiller();
 			p.sendMessage(ChatColor.GREEN + "Your killstreak was lost by " + ChatColor.RED + killer.getName());
 			addtokillstreak(killer);
+			String name = p.getName();
 			int kills = killstreak.get(p);
 			kills = 0;
+			killstreak.put(name, kills);
 		}
 		return;
 		}
@@ -70,7 +79,7 @@ public class MineSlamKillStreaks extends JavaPlugin implements Listener {
 			killstreak.put(name, kills);
 			killer.sendMessage(ChatColor.GREEN  + "You now have " + ChatColor.RED + Integer.toString(kills) + ChatColor.WHITE + " kills! Good job!");
 			// run another method to run console commands
-			runcommands(name,killstreak.get(name));
+			runcommands(name, killstreak.get(name));
 		}else{
 			//first kill of a new streak
 			killstreak.put(name, 1);

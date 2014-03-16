@@ -1,9 +1,12 @@
-'3':
+'3': 
   '1': silentmessages %name%
-  '2': give %name% potion 2 effect:slowness power:1 duration:5
+  '2': slownesspotion %name%
 '5':
   '1': silentmessages %name%
+  '2': give %name% 46 1
 '7':
   '1': silentmessages %name%
+  '2': give %name% 346 1
 '10':
-  '1':  silentmessages %name%
+  '1': silentmessages %name%
+  '2': give %name% potion 1 effect:strength power:1 duration:10 effect:speed power:2 duration:10 effect:confusion power:1 duration:10
